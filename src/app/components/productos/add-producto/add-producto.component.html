@@ -1,0 +1,21 @@
+<div class="container my-5">
+    <h2>Crear Producto</h2>
+    <form #productoForm="ngForm" (ngSubmit)="crearProducto(productoForm)">
+        <div *ngIf="mensajeExito" class="text-success">El producto ha sido creado con exito</div>
+        <div class="mb-3" [ngClass]="{'has-error': nombreDuplicado}">
+            <label for="nombre" class="form-label">Nombre Producto</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="producto.nombre" #nombre="ngModel" required>
+            <div *ngIf="nombreDuplicado" class="text-danger">Ya existe el producto que quiere crear</div>
+        </div>
+        <div class="mb-3" [ngClass]="{'has-error':productoForm.submitted && precio.invalid}">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="precio" name="precio" #precio="ngModel" [(ngModel)]="producto.precio" required>
+            <div *ngIf="producto.precio<=0" class="text-danger">No puede crear un producto con precio $0 o menor a 0</div>
+        </div>
+        <div class="mb-3">
+            <label for="foto" class="form-label">Link Imagen</label>
+            <input type="text" class="form-control" id="foto" name="foto" [(ngModel)]="producto.foto" #foto="ngModel" required>
+        </div>
+        <button type="submit" class="btn btn-warning">Crear Producto</button>
+    </form>
+</div>
