@@ -1,0 +1,16 @@
+<table class="container table table-light table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Foto</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of localProductoList">
+            <td>{{ producto.nombre}}</td>
+            <td>{{ producto.precio}}</td>
+            <td><img src="{{ producto.foto }}" alt="{{ producto.nombre }}" width="100" height="100"></td>
+        </tr>
+    </tbody>
+</table>
